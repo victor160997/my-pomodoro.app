@@ -1,5 +1,5 @@
 import Sound from 'react-sound';
-import music from '../ring.mp3';
+import ring from '../ring.mp3';
 
 const PlaySound = (
   handleSongLoading,
@@ -8,7 +8,7 @@ const PlaySound = (
 ) => {
   return(
     <Sound
-        url={ music }
+        url={ ring }
         playStatus={ Sound.status.PLAYING }
         playFromPosition={ 300 }
         onLoading={ handleSongLoading }

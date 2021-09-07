@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getInfoTimeAction } from '../actions';
+import PlayRap from './PlayRap';
+import PlayJazz from './PlayJazz';
 
 class Form extends Component {
   constructor(props) {
@@ -47,6 +49,7 @@ class Form extends Component {
       pausaLonga: 30,
       ciclos: 8,
       ativo: false,
+      selectMusic: '',
     });
     getInfoTimeProps({ timeWork: 25,
       pausaCurta: 5,
@@ -56,7 +59,7 @@ class Form extends Component {
   }
 
   render() {
-    const { timeWork, pausaCurta, pausaLonga, ciclos, ativo } = this.state;
+    const { timeWork, pausaCurta, pausaLonga, ciclos, ativo, selectMusic } = this.state;
     return (
       <form>
         <label htmlFor="work">
@@ -112,7 +115,21 @@ class Form extends Component {
           disabled ={ ativo ? false : true }
         >
           Interromper
-        </button>  
+        </button>
+        <label htmlFor="selectMusic">
+          <select 
+            name="selectMusic" 
+            id="selectMusic"
+            value={ selectMusic }
+            onChange={ this.handleChange }
+          >
+            <option value="nenhuma">Nenhuma</option>
+            <option value="rap">Rap</option>
+            <option value="jazz">Jazz</option>
+          </select>
+        </label>
+        { selectMusic==='rap' ? <PlayRap /> : '' }
+        { selectMusic==='jazz' ? <PlayJazz /> : '' }
       </form>
     )
   }
