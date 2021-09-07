@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Cronometro from './components/Cronometro';
-import Form from './components/Form';
+import HomePage from './HomePage';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Form />
-        <Cronometro />
+        <HomePage />
       </div>
     )
   }
-}
-
+}   
