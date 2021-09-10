@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 }
 
 const GET_INFO_TIME = 'GET_INFO_TIME';
+const RESET_CRO = 'RESET_CRO';
 
 const time = (state = INITIAL_STATE, action) => {
   switch(action.type) {
@@ -15,6 +16,11 @@ const time = (state = INITIAL_STATE, action) => {
         ...state,
         time: action.payload,
       }
+    case RESET_CRO:
+      return {
+        ...state,
+        time: action.payload,
+      }  
     default:
       return state;
   }

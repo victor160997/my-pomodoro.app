@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PlaySound from './PlaySound'
 import { connect } from 'react-redux';
+import { resetAction } from '../actions';
 
 class Cronometro extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Cronometro extends Component {
       seconds: 45,
       quantidadeCiclos: 1,
       pausa: false,
+      pausaLonga: false,
     }
   }
 
@@ -27,7 +29,7 @@ class Cronometro extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { pomodoro } = prevProps;
+    const { pomodoro, reset } = prevProps;
     if (prevState.seconds === 59) {
       this.setState((prevState) => ({minutes: prevState.minutes + 1}));
       this.setState((prevState) => ({seconds: 0}));
@@ -50,6 +52,27 @@ class Cronometro extends Component {
       this.setState((prevState) => ({pausa: false}));
       // this.setState((prevState) => ({hours: 1}));
     }
+    if (prevState.seconds === 59 && 
+      prevState.minutes === pomodoro.timeWork - 1 &&
+      prevState.quantidadeCiclos === prevProps.pomodoro.ciclos) {
+        this.setState((prevState) => ({minutes: 0}));
+        this.setState((prevState) => ({seconds: 0}));
+        this.setState((prevState) => ({pausaLonga: true}));
+      }
+    if (prevState.paulaLonga === true &&
+      prevState.minutes === pomodoro.paulaLonga - 1 &&
+      prevState.seconds === 59) {
+        this.setState((prevState) => ({minutes: 0}));
+        this.setState((prevState) => ({seconds: 0}));
+        this.setState((prevState) => ({pausaLonga: false}));
+        reset({
+          timeWork: 25,
+          pausaCurta: 5,
+          pausaLonga: 30,
+          ciclos: 8,
+          ativo: false,
+        });
+      };
   }
 
   render() {
@@ -74,6 +97,10 @@ class Cronometro extends Component {
 
 const mapStateToProps = (state) => ({
   pomodoro: state.time.time,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  reset: (payload) => dispatch(resetAction(payload))
 })
 
-export default connect(mapStateToProps)(Cronometro)
+export default connect(mapStateToProps, mapDispatchToProps)(Cronometro)

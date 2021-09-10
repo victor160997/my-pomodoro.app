@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getInfoTimeAction } from '../actions';
-import PlayRap from './PlayRap';
-import PlayJazz from './PlayJazz';
+import { getInfoTimeAction, resetAction } from '../actions';
+import YoutubeJazz from './YoutubeJazz';
+import YoutubeConcentration from './YoutubeConcentration';
+import YoutubeOpera from './YoutubeOpera';
+import './form.css';
 
 class Form extends Component {
   constructor(props) {
@@ -20,13 +22,20 @@ class Form extends Component {
     this.handleInterruption = this.handleInterruption.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { pomodoro } = this.props;
+    if (prevState.ativo === true && pomodoro.ativo === false) {
+      this.setState({ ativo: false });
+    }
+  }
+
   handleChange(event) {
     const key = event.target.name;
     this.setState({ [key]: event.target.value })
   }
 
   handleClickInfo() {
-    const { timeWork, pausaCurta, pausaLonga, ciclos, ativo } = this.state;
+    const { timeWork, pausaCurta, pausaLonga, ciclos } = this.state;
     const { getInfoTimeProps } = this.props;
     if (Number(timeWork) < 25 || Number(timeWork) > 50) {
       return alert('É recomendado que o tempo de foco seja de 25 a 50 minutos!')
@@ -60,63 +69,69 @@ class Form extends Component {
 
   render() {
     const { timeWork, pausaCurta, pausaLonga, ciclos, ativo, selectMusic } = this.state;
+    const { reset } = this.props;
     return (
-      <form>
-        <label htmlFor="work">
-          Tempo Focado:
-          <input 
-            value={ timeWork }
-            type="number"
-            id="work"
-            name="timeWork" 
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="pausa">
-          Pausa curta(minutos):
-          <input
-            value={ pausaCurta } 
-            type="number"
-            id="pausaCurta"
-            name="pausaCurta"
-            onChange={ this.handleChange } 
-          />
-        </label>
-        <label htmlFor="pausa">
-          Pausa longa(minutos):
-          <input
-            value={ pausaLonga } 
-            type="number"
-            id="pausaLonga"
-            name="pausaLonga"
-            onChange={ this.handleChange } 
-          />
-        </label>
-        <label htmlFor="ciclos">
-          Número de ciclos:
-          <input
-            value={ ciclos } 
-            type="number"
-            id="ciclos"
-            name="ciclos"
-            onChange={ this.handleChange } 
-          />
-        </label>
-        <button 
-          type="button"
-          onClick={ this.handleClickInfo }
-          disabled ={ ativo ? true : false }
-        >
-          Começar
-        </button>
-        <button
-          type="button"
-          onClick={ this.handleInterruption }
-          disabled ={ ativo ? false : true }
-        >
-          Interromper
-        </button>
+      <form className="form">
+        <div className="inputs-form">
+          <label htmlFor="work">
+            Pomodoro
+            <input 
+              value={ timeWork }
+              type="number"
+              id="work"
+              name="timeWork" 
+              onChange={ this.handleChange }
+            />
+          </label>
+          <label htmlFor="pausa">
+            Pausa curta
+            <input
+              value={ pausaCurta } 
+              type="number"
+              id="pausaCurta"
+              name="pausaCurta"
+              onChange={ this.handleChange } 
+            />
+          </label>
+          <label htmlFor="pausa">
+            Pausa longa
+            <input
+              value={ pausaLonga } 
+              type="number"
+              id="pausaLonga"
+              name="pausaLonga"
+              onChange={ this.handleChange } 
+            />
+          </label>
+          <label htmlFor="ciclos">
+            Número de ciclos
+            <input
+              value={ ciclos } 
+              type="number"
+              id="ciclos"
+              name="ciclos"
+              onChange={ this.handleChange } 
+            />
+          </label>
+        </div>
+        <div className="buttons-form">
+          <button 
+            type="button"
+            onClick={ this.handleClickInfo }
+            disabled ={ ativo ? true : false }
+          >
+            Começar
+          </button>
+          <button
+            type="button"
+            onClick={ this.handleInterruption }
+            disabled ={ ativo ? false : true }
+          >
+            Reset
+          </button>
+        </div>
         <label htmlFor="selectMusic">
+          Selecione uma música para se concentrar melhor:
           <select 
             name="selectMusic" 
             id="selectMusic"
@@ -124,12 +139,14 @@ class Form extends Component {
             onChange={ this.handleChange }
           >
             <option value="nenhuma">Nenhuma</option>
-            <option value="rap">Rap</option>
+            <option value="Concentration">Concentration</option>
             <option value="jazz">Jazz</option>
+            <option value="opera">Opera</option>
           </select>
         </label>
-        { selectMusic==='rap' ? <PlayRap /> : '' }
-        { selectMusic==='jazz' ? <PlayJazz /> : '' }
+        { selectMusic==='Concentration' ? <YoutubeConcentration /> : '' }
+        { selectMusic==='jazz' ? <YoutubeJazz /> : '' }
+        { selectMusic==='opera' ? <YoutubeOpera /> : '' }
       </form>
     )
   }
@@ -139,9 +156,13 @@ Form.propTypes = {
   getInfoTimeProps: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  pomodoro: state.time.time,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  getInfoTimeProps: (payload) => dispatch(getInfoTimeAction(payload))
+  getInfoTimeProps: (payload) => dispatch(getInfoTimeAction(payload)),
+  reset: (payload) => dispatch(resetAction(payload)),
 })
 
-export default connect(null, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(Form)

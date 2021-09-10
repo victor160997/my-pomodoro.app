@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Cronometro from './components/Cronometro'
 import Form from './components/Form'
+import './HomePage.css';
 
 class HomePage extends Component {
   render() {
     const { pomodoro } = this.props;
     return (
-      <div>
-        <h1>Pomodoro</h1>
+      <div className="home-page-body">
+        <h1 className="title-home-page">Pomodoro</h1>
         <Form />
-        { pomodoro && pomodoro.ativo ? <Cronometro pomodoro={ pomodoro } /> : <h1>Clique em começar!</h1> }
+        { pomodoro && pomodoro.ativo ? <Cronometro pomodoro={ pomodoro } /> : '' }
         
       </div>
     )
