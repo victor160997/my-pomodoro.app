@@ -12,9 +12,7 @@ const YoutubeConcentration = () => (
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
       title="Embedded youtube"
-      class="yt-videos"
     />
-    <h2>Loading...</h2>
   </div>
 );
 

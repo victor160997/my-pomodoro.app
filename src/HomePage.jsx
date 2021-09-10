@@ -12,7 +12,12 @@ class HomePage extends Component {
         <h1 className="title-home-page">Pomodoro</h1>
         <Form />
         { pomodoro && pomodoro.ativo ? <Cronometro pomodoro={ pomodoro } /> : '' }
-        
+        <footer>
+          <p><b>Feito com</b>: React, Redux e CSS</p>
+          <p><b>Autor</b>: Victor Mendonça Rodrigues</p>
+          <p><b>E-mail</b>: victor.men.dev@gmail.com</p>
+          <p><b>Versão</b>: 1.0</p>
+        </footer>
       </div>
     )
   }

@@ -1,11 +1,13 @@
 .form {
-  background-color: brown;
+  background-color: #EFCC2E;
+  color: #110B11;
+  padding: 40px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 }
 
 .inputs-form {
-  background-color: burlywood;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,6 +22,18 @@
 
 .inputs-form input {
   width: 50px;
+  background-color: #110B11;
+  color: #B7990D;
+  border: solid 1px rgb(188,231,253);
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.inputs-form input:hover {
+  transform: scale(1.1);
+  color: #110B11;
+  background-color: #F2F4CB;
+  border: solid 1px rgb(188,231,253);
 }
 
 .buttons-form {
@@ -30,5 +44,35 @@
 
 .buttons-form button {
   margin: 15px;
-  padding: 20px 0px;
+  padding: 0px;
+  height: 50px;
+  width: 100px;
+  background-color: #110B11;;
+  color: #B7990D;
+  border: solid 1px rgb(188,231,253);
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.buttons-form button:hover {
+  transform: scale(1.1);
+  color: #110B11;
+  background-color: #F2F4CB;
+  border: solid 1px rgb(188,231,253);
+}
+
+.select-form {
+  margin-left: 10px;
+  background-color: #110B11;
+  color: #B7990D;
+  border: solid 1px rgb(188,231,253);
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.select-form:hover {
+  transform: scale(1.1);
+  color: #110B11;
+  background-color: #F2F4CB;
+  border: solid 1px rgb(188,231,253);
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PlaySound from './PlaySound'
 import { connect } from 'react-redux';
 import { resetAction } from '../actions';
+import './Cro.css';
 
 class Cronometro extends Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class Cronometro extends Component {
         ciclos: 8,
       },
       /* hours: 0, */
-      minutes: 24,
-      seconds: 45,
+      minutes: 0,
+      seconds: 0,
       quantidadeCiclos: 1,
       pausa: false,
       pausaLonga: false,
@@ -79,17 +80,11 @@ class Cronometro extends Component {
     const { minutes, seconds, quantidadeCiclos, pausa } = this.state;
     const { pomodoro } = this.props;
     return (
-      <div>
+      <div className="cro-body">
         { minutes === pomodoro.timeWork - 1  && seconds > 50 ? <PlaySound /> : ''}
-        { pausa ? <h1>Pausa curta</h1> : <h1>Ciclo { quantidadeCiclos }</h1>}
+        { pausa ? <h2>Pausa</h2> : <h2>Ciclo { quantidadeCiclos }</h2>}
         <h1>{ minutes < 10 ? 0 : ''}{ minutes }: { seconds < 10 ? 0 : ''}{ seconds }</h1>
         <br />
-        <ul>
-          <li>Tempo focado: { pomodoro.timeWork }</li>
-          <li>Pausa curta: { pomodoro.pausaCurta }</li>
-          <li>Pausa longa: { pomodoro.pausaLonga }</li>
-          <li>Quantidade de ciclos: { pomodoro.ciclos }</li>
-        </ul>
       </div>
     )
   }

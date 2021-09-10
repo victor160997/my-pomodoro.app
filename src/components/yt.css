@@ -1,4 +1,6 @@
 .yt-videos {
-  border: solid black 1px;
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 30px;
 }

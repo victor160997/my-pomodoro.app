@@ -104,7 +104,7 @@ class Form extends Component {
             />
           </label>
           <label htmlFor="ciclos">
-            Número de ciclos
+            Ciclos
             <input
               value={ ciclos } 
               type="number"
@@ -132,7 +132,8 @@ class Form extends Component {
         </div>
         <label htmlFor="selectMusic">
           Selecione uma música para se concentrar melhor:
-          <select 
+          <select
+            className="select-form" 
             name="selectMusic" 
             id="selectMusic"
             value={ selectMusic }
@@ -144,9 +145,11 @@ class Form extends Component {
             <option value="opera">Opera</option>
           </select>
         </label>
-        { selectMusic==='Concentration' ? <YoutubeConcentration /> : '' }
-        { selectMusic==='jazz' ? <YoutubeJazz /> : '' }
-        { selectMusic==='opera' ? <YoutubeOpera /> : '' }
+        <div className="yt-videos">
+          { selectMusic==='Concentration' ? <YoutubeConcentration /> : '' }
+          { selectMusic==='jazz' ? <YoutubeJazz /> : '' }
+          { selectMusic==='opera' ? <YoutubeOpera /> : '' }
+        </div>
       </form>
     )
   }
