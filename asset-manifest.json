@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.9ad94d23.chunk.css",
-    "main.js": "/static/js/main.62f48483.chunk.js",
-    "main.js.map": "/static/js/main.62f48483.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.992e68e6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.992e68e6.js.map",
-    "static/js/2.505dae2a.chunk.js": "/static/js/2.505dae2a.chunk.js",
-    "static/js/2.505dae2a.chunk.js.map": "/static/js/2.505dae2a.chunk.js.map",
-    "static/js/3.aca33a30.chunk.js": "/static/js/3.aca33a30.chunk.js",
-    "static/js/3.aca33a30.chunk.js.map": "/static/js/3.aca33a30.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.9ad94d23.chunk.css.map": "/static/css/main.9ad94d23.chunk.css.map",
-    "static/js/2.505dae2a.chunk.js.LICENSE.txt": "/static/js/2.505dae2a.chunk.js.LICENSE.txt",
-    "static/media/ring.c3eccb3f.mp3": "/static/media/ring.c3eccb3f.mp3"
+    "main.css": "/my-pomodoro.app/static/css/main.9ad94d23.chunk.css",
+    "main.js": "/my-pomodoro.app/static/js/main.62f48483.chunk.js",
+    "main.js.map": "/my-pomodoro.app/static/js/main.62f48483.chunk.js.map",
+    "runtime-main.js": "/my-pomodoro.app/static/js/runtime-main.e77aa745.js",
+    "runtime-main.js.map": "/my-pomodoro.app/static/js/runtime-main.e77aa745.js.map",
+    "static/js/2.505dae2a.chunk.js": "/my-pomodoro.app/static/js/2.505dae2a.chunk.js",
+    "static/js/2.505dae2a.chunk.js.map": "/my-pomodoro.app/static/js/2.505dae2a.chunk.js.map",
+    "static/js/3.aca33a30.chunk.js": "/my-pomodoro.app/static/js/3.aca33a30.chunk.js",
+    "static/js/3.aca33a30.chunk.js.map": "/my-pomodoro.app/static/js/3.aca33a30.chunk.js.map",
+    "index.html": "/my-pomodoro.app/index.html",
+    "static/css/main.9ad94d23.chunk.css.map": "/my-pomodoro.app/static/css/main.9ad94d23.chunk.css.map",
+    "static/js/2.505dae2a.chunk.js.LICENSE.txt": "/my-pomodoro.app/static/js/2.505dae2a.chunk.js.LICENSE.txt",
+    "static/media/ring.c3eccb3f.mp3": "/my-pomodoro.app/static/media/ring.c3eccb3f.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.992e68e6.js",
+    "static/js/runtime-main.e77aa745.js",
     "static/js/2.505dae2a.chunk.js",
     "static/css/main.9ad94d23.chunk.css",
     "static/js/main.62f48483.chunk.js"
