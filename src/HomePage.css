@@ -24,3 +24,15 @@
   padding: 10px;
   border-top: solid #B7990D 1px;
 }
+
+@media screen and (max-width: 460px) and (max-height: 768px) {
+  .home-page-body footer {
+    font-size: xx-small;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    margin: 10px 10px 3px 10px;
+    padding: 10px;
+    border-top: solid #B7990D 1px;
+  }
+}
