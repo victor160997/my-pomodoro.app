@@ -69,7 +69,6 @@ class Form extends Component {
 
   render() {
     const { timeWork, pausaCurta, pausaLonga, ciclos, ativo, selectMusic } = this.state;
-    const { reset } = this.props;
     return (
       <form className="form">
         <div className="inputs-form">
